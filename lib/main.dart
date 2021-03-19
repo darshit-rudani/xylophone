@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
 
 void main() {
   runApp(
@@ -7,11 +8,18 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  void playsound(int soundnumber) {
+    final player = AudioCache();
+    player.play('note$soundnumber.wav');
+  }
+
   Expanded buildcode({Color color, int soundnumber}) {
     return Expanded(
       child: FlatButton(
         color: color,
-        onPressed: () {},
+        onPressed: () {
+          playsound(soundnumber);
+        },
       ),
     );
   }
@@ -26,13 +34,13 @@ class MyApp extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              buildcode(color: Colors.red),
-              buildcode(color: Colors.orange),
-              buildcode(color: Colors.yellow),
-              buildcode(color: Colors.green),
-              buildcode(color: Colors.teal),
-              buildcode(color: Colors.blue),
-              buildcode(color: Colors.purple),
+              buildcode(color: Colors.red, soundnumber: 1),
+              buildcode(color: Colors.orange, soundnumber: 2),
+              buildcode(color: Colors.yellow, soundnumber: 3),
+              buildcode(color: Colors.green, soundnumber: 4),
+              buildcode(color: Colors.teal, soundnumber: 5),
+              buildcode(color: Colors.blue, soundnumber: 6),
+              buildcode(color: Colors.purple, soundnumber: 7),
             ],
           ),
         ),
